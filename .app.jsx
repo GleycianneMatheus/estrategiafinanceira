@@ -12,6 +12,8 @@ export default function App() {
   const [clientesMentoria, setClientesMentoria] = useState([])
   const [dividas, setDividas] = useState([])
   const [loading, setLoading] = useState(true)
+  const [inputFV, setInputFV] = useState('')
+  const [inputMentoria, setInputMentoria] = useState('')
 
   // CONSTANTES FINANCEIRAS
   const GASTOS_PESSOAIS = 21700
@@ -33,31 +35,34 @@ export default function App() {
   const carregarDados = async () => {
     try {
       const [{ data: fv }, { data: mentoria }, { data: div }] = await Promise.all([
-        supabase.from('clientes_fechou_venda').select('*'),
-        supabase.from('clientes_mentoria').select('*'),
-        supabase.from('dividas').select('*')
+        supabase.from('clientes_fechou_venda').select('*').order('id', { ascending: false }),
+        supabase.from('clientes_mentoria').select('*').order('id', { ascending: false }),
+        supabase.from('dividas').select('*').order('id', { ascending: false })
       ])
       setClientesFV(fv || [])
       setClientesMentoria(mentoria || [])
       setDividas(div || [])
-      setLoading(false)
     } catch (err) {
       console.error('Erro ao carregar:', err)
+    } finally {
       setLoading(false)
     }
   }
 
   // Adicionar cliente Fechou Venda
-  const adicionarClienteFV = async (nome) => {
-    if (!nome.trim()) return
+  const adicionarClienteFV = async () => {
+    if (!inputFV.trim()) return
     try {
       const { data, error } = await supabase
         .from('clientes_fechou_venda')
-        .insert([{ nome, data: new Date().toISOString() }])
+        .insert([{ name: inputFV, data: new Date().toISOString().split('T')[0] }])
         .select()
-      if (!error) {
-        setClientesFV([...clientesFV, data[0]])
-        document.getElementById('input-fv').value = ''
+      
+      if (!error && data) {
+        setClientesFV([data[0], ...clientesFV])
+        setInputFV('')
+      } else {
+        console.error('Erro:', error)
       }
     } catch (err) {
       console.error('Erro:', err)
@@ -65,16 +70,19 @@ export default function App() {
   }
 
   // Adicionar cliente Mentoria
-  const adicionarClienteMentoria = async (nome) => {
-    if (!nome.trim()) return
+  const adicionarClienteMentoria = async () => {
+    if (!inputMentoria.trim()) return
     try {
       const { data, error } = await supabase
         .from('clientes_mentoria')
-        .insert([{ nome, data: new Date().toISOString() }])
+        .insert([{ name: inputMentoria, data: new Date().toISOString().split('T')[0] }])
         .select()
-      if (!error) {
-        setClientesMentoria([...clientesMentoria, data[0]])
-        document.getElementById('input-mentoria').value = ''
+      
+      if (!error && data) {
+        setClientesMentoria([data[0], ...clientesMentoria])
+        setInputMentoria('')
+      } else {
+        console.error('Erro:', error)
       }
     } catch (err) {
       console.error('Erro:', err)
@@ -101,8 +109,6 @@ export default function App() {
   const rendaTotal = RENDA_FIXA + receitaFV + receitaMentoria
   const saldo = rendaTotal - GASTOS_TOTAIS
   const faltaPara5k = Math.max(0, (GASTOS_TOTAIS + META_SOBRA) - rendaTotal)
-
-  // Quanto falta vender
   const clientesFaltam = Math.ceil(faltaPara5k / (IMPLANTACAO_FV + RECORRENTE_FV))
 
   if (loading) {
@@ -127,6 +133,34 @@ export default function App() {
       {/* CONTAINER */}
       <div className="max-w-7xl mx-auto px-6 py-8">
         
+        {/* ABAS */}
+        <div className="flex gap-2 mb-8 border-b border-slate-200 flex-wrap">
+          <button
+            onClick={() => setActiveTab('dashboard')}
+            className={`px-6 py-3 font-medium transition-colors whitespace-nowrap ${activeTab === 'dashboard' ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-slate-600 hover:text-slate-900'}`}
+          >
+            Dashboard
+          </button>
+          <button
+            onClick={() => setActiveTab('fv')}
+            className={`px-6 py-3 font-medium transition-colors whitespace-nowrap ${activeTab === 'fv' ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-slate-600 hover:text-slate-900'}`}
+          >
+            Fechou Venda ({clientesFV.length})
+          </button>
+          <button
+            onClick={() => setActiveTab('mentoria')}
+            className={`px-6 py-3 font-medium transition-colors whitespace-nowrap ${activeTab === 'mentoria' ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-slate-600 hover:text-slate-900'}`}
+          >
+            Mentoria ({clientesMentoria.length})
+          </button>
+          <button
+            onClick={() => setActiveTab('dividas')}
+            className={`px-6 py-3 font-medium transition-colors whitespace-nowrap ${activeTab === 'dividas' ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-slate-600 hover:text-slate-900'}`}
+          >
+            Dívidas
+          </button>
+        </div>
+
         {/* DASHBOARD PRINCIPAL */}
         {activeTab === 'dashboard' && (
           <div className="space-y-8">
@@ -139,7 +173,6 @@ export default function App() {
                 <p className="text-3xl font-bold text-green-600 mt-2">
                   R$ {rendaTotal.toLocaleString('pt-BR')}
                 </p>
-                <p className="text-xs text-slate-500 mt-2">Fixa + Vendas</p>
               </div>
 
               {/* Gastos Total */}
@@ -148,7 +181,6 @@ export default function App() {
                 <p className="text-3xl font-bold text-red-600 mt-2">
                   R$ {GASTOS_TOTAIS.toLocaleString('pt-BR')}
                 </p>
-                <p className="text-xs text-slate-500 mt-2">Pessoal + Empresa</p>
               </div>
 
               {/* Saldo */}
@@ -157,117 +189,48 @@ export default function App() {
                 <p className={`text-3xl font-bold mt-2 ${saldo >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                   R$ {Math.abs(saldo).toLocaleString('pt-BR')}
                 </p>
-                <p className="text-xs text-slate-500 mt-2">{saldo >= 0 ? '✅ Positivo' : '❌ Negativo'}</p>
               </div>
 
               {/* Meta R$ 5k */}
               <div className="bg-indigo-50 rounded-xl shadow-md p-6 border-l-4 border-indigo-500">
-                <p className="text-slate-600 text-sm font-medium">Meta: +R$ 5k</p>
+                <p className="text-slate-600 text-sm font-medium">Faltam</p>
                 <p className="text-3xl font-bold text-indigo-600 mt-2">
                   R$ {faltaPara5k.toLocaleString('pt-BR')}
                 </p>
-                <p className="text-xs text-slate-500 mt-2">Faltam para meta</p>
               </div>
             </div>
 
-            {/* BREAKDOWN */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* RENDA BREAKDOWN */}
-              <div className="bg-white rounded-xl shadow-md p-6">
-                <h3 className="font-bold text-lg text-slate-900 mb-4">📊 Renda (Breakdown)</h3>
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
-                    <span className="text-slate-700">Consultoria Fixa</span>
-                    <span className="font-semibold text-green-600">R$ {RENDA_FIXA.toLocaleString('pt-BR')}</span>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
-                    <span className="text-slate-700">Fechou Venda ({clientesFV.length} clientes)</span>
-                    <span className="font-semibold text-blue-600">R$ {receitaFV.toLocaleString('pt-BR')}</span>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
-                    <span className="text-slate-700">Mentoria ({clientesMentoria.length} clientes)</span>
-                    <span className="font-semibold text-purple-600">R$ {receitaMentoria.toLocaleString('pt-BR')}</span>
-                  </div>
-                  <div className="border-t pt-3 flex justify-between items-center">
-                    <span className="font-bold text-slate-900">TOTAL</span>
-                    <span className="font-bold text-lg text-green-600">R$ {rendaTotal.toLocaleString('pt-BR')}</span>
-                  </div>
+            {/* RENDA BREAKDOWN */}
+            <div className="bg-white rounded-xl shadow-md p-6">
+              <h3 className="font-bold text-lg text-slate-900 mb-4">📊 Renda (Breakdown)</h3>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
+                  <span className="text-slate-700">Consultoria Fixa</span>
+                  <span className="font-semibold text-green-600">R$ {RENDA_FIXA.toLocaleString('pt-BR')}</span>
                 </div>
-              </div>
-
-              {/* GASTOS BREAKDOWN */}
-              <div className="bg-white rounded-xl shadow-md p-6">
-                <h3 className="font-bold text-lg text-slate-900 mb-4">💸 Gastos (Breakdown)</h3>
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center p-3 bg-orange-50 rounded-lg">
-                    <span className="text-slate-700">Gastos Pessoais</span>
-                    <span className="font-semibold text-orange-600">R$ {GASTOS_PESSOAIS.toLocaleString('pt-BR')}</span>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-pink-50 rounded-lg">
-                    <span className="text-slate-700">Gastos Empresa (FV)</span>
-                    <span className="font-semibold text-pink-600">R$ {GASTOS_EMPRESA.toLocaleString('pt-BR')}</span>
-                  </div>
-                  <div className="border-t pt-3 flex justify-between items-center">
-                    <span className="font-bold text-slate-900">TOTAL</span>
-                    <span className="font-bold text-lg text-red-600">R$ {GASTOS_TOTAIS.toLocaleString('pt-BR')}</span>
-                  </div>
+                <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                  <span className="text-slate-700">Fechou Venda ({clientesFV.length} clientes)</span>
+                  <span className="font-semibold text-blue-600">R$ {receitaFV.toLocaleString('pt-BR')}</span>
+                </div>
+                <div className="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
+                  <span className="text-slate-700">Mentoria ({clientesMentoria.length} clientes)</span>
+                  <span className="font-semibold text-purple-600">R$ {receitaMentoria.toLocaleString('pt-BR')}</span>
+                </div>
+                <div className="border-t pt-3 flex justify-between items-center">
+                  <span className="font-bold text-slate-900">TOTAL</span>
+                  <span className="font-bold text-lg text-green-600">R$ {rendaTotal.toLocaleString('pt-BR')}</span>
                 </div>
               </div>
             </div>
 
-            {/* PROGRESSO PARA META */}
+            {/* PROGRESSO */}
             <div className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl shadow-md p-8 text-white">
-              <h3 className="font-bold text-xl mb-4">🎯 Progresso para Meta (R$ 5k/mês)</h3>
-              <div className="flex items-center justify-between mb-4">
-                <div>
-                  <p className="text-indigo-100">Clientes Fechou Venda faltam:</p>
-                  <p className="text-4xl font-bold">{Math.max(0, clientesFaltam)}</p>
-                </div>
-                <div className="text-right">
-                  <p className="text-indigo-100">ou</p>
-                  <p className="text-3xl font-bold">1 Mentoria</p>
-                </div>
-              </div>
-              <div className="w-full bg-white/20 rounded-full h-3">
-                <div 
-                  className="bg-white h-3 rounded-full transition-all"
-                  style={{width: `${Math.min(100, (rendaTotal / (GASTOS_TOTAIS + META_SOBRA)) * 100)}%`}}
-                ></div>
-              </div>
-              <p className="text-indigo-100 mt-2 text-sm">
-                {((rendaTotal / (GASTOS_TOTAIS + META_SOBRA)) * 100).toFixed(0)}% da meta
-              </p>
+              <h3 className="font-bold text-xl mb-4">🎯 Clientes Faltam</h3>
+              <p className="text-4xl font-bold">{Math.max(0, clientesFaltam)}</p>
+              <p className="text-indigo-100 mt-2">clientes Fechou Venda para R$ 5k/mês</p>
             </div>
           </div>
         )}
-
-        {/* ABAS */}
-        <div className="flex gap-2 mb-8 border-b border-slate-200">
-          <button
-            onClick={() => setActiveTab('dashboard')}
-            className={`px-6 py-3 font-medium transition-colors ${activeTab === 'dashboard' ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-slate-600 hover:text-slate-900'}`}
-          >
-            Dashboard
-          </button>
-          <button
-            onClick={() => setActiveTab('fv')}
-            className={`px-6 py-3 font-medium transition-colors ${activeTab === 'fv' ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-slate-600 hover:text-slate-900'}`}
-          >
-            Fechou Venda
-          </button>
-          <button
-            onClick={() => setActiveTab('mentoria')}
-            className={`px-6 py-3 font-medium transition-colors ${activeTab === 'mentoria' ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-slate-600 hover:text-slate-900'}`}
-          >
-            Mentoria
-          </button>
-          <button
-            onClick={() => setActiveTab('dividas')}
-            className={`px-6 py-3 font-medium transition-colors ${activeTab === 'dividas' ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-slate-600 hover:text-slate-900'}`}
-          >
-            Dívidas
-          </button>
-        </div>
 
         {/* FECHOU VENDA */}
         {activeTab === 'fv' && (
@@ -275,14 +238,15 @@ export default function App() {
             <h2 className="text-2xl font-bold text-slate-900 mb-6">Clientes Fechou Venda</h2>
             <div className="mb-6 flex gap-2">
               <input
-                id="input-fv"
                 type="text"
                 placeholder="Nome do cliente..."
-                onKeyPress={(e) => e.key === 'Enter' && adicionarClienteFV(e.target.value)}
+                value={inputFV}
+                onChange={(e) => setInputFV(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && adicionarClienteFV()}
                 className="flex-1 px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <button
-                onClick={() => adicionarClienteFV(document.getElementById('input-fv').value)}
+                onClick={adicionarClienteFV}
                 className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 font-medium"
               >
                 Adicionar
@@ -295,7 +259,7 @@ export default function App() {
                 clientesFV.map((cliente) => (
                   <div key={cliente.id} className="flex justify-between items-center p-4 bg-blue-50 rounded-lg">
                     <div>
-                      <p className="font-medium text-slate-900">{cliente.nome}</p>
+                      <p className="font-medium text-slate-900">{cliente.name}</p>
                       <p className="text-sm text-slate-500">R$ 2.400 implantação + R$ 500/mês</p>
                     </div>
                     <button
@@ -317,14 +281,15 @@ export default function App() {
             <h2 className="text-2xl font-bold text-slate-900 mb-6">Clientes Mentoria</h2>
             <div className="mb-6 flex gap-2">
               <input
-                id="input-mentoria"
                 type="text"
                 placeholder="Nome do cliente..."
-                onKeyPress={(e) => e.key === 'Enter' && adicionarClienteMentoria(e.target.value)}
+                value={inputMentoria}
+                onChange={(e) => setInputMentoria(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && adicionarClienteMentoria()}
                 className="flex-1 px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
               <button
-                onClick={() => adicionarClienteMentoria(document.getElementById('input-mentoria').value)}
+                onClick={adicionarClienteMentoria}
                 className="px-6 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 font-medium"
               >
                 Adicionar
@@ -337,7 +302,7 @@ export default function App() {
                 clientesMentoria.map((cliente) => (
                   <div key={cliente.id} className="flex justify-between items-center p-4 bg-purple-50 rounded-lg">
                     <div>
-                      <p className="font-medium text-slate-900">{cliente.nome}</p>
+                      <p className="font-medium text-slate-900">{cliente.name}</p>
                       <p className="text-sm text-slate-500">R$ 60.000</p>
                     </div>
                     <button
@@ -365,7 +330,7 @@ export default function App() {
                   <div key={divida.id} className="p-4 bg-red-50 rounded-lg border border-red-200">
                     <p className="font-medium text-slate-900">{divida.descricao}</p>
                     <p className="text-sm text-slate-600 mt-1">
-                      R$ {divida.valor_total?.toLocaleString('pt-BR') || '0'} total
+                      R$ {divida.valor?.toLocaleString('pt-BR') || '0'}
                     </p>
                   </div>
                 ))

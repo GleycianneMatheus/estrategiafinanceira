@@ -1,0 +1,4 @@
+assets/hero-banner.jpg — coloque aqui a arte do topo (catedral + diácono).
+assets/diacono.png — foto recortada do Diácono Romulo Canuto (fundo transparente).
+
+Sem esses arquivos a página usa um fundo de catedral estilizado e o emblema do Cerco, entao ela funciona bem mesmo assim.

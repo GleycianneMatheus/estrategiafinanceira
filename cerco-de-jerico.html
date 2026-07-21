@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cerco de Jericó — 7 Noites de Oração Estratégica</title>
+<meta name="description" content="De 03 a 09 de agosto de 2026, às 22h, ao vivo. Participe do Cerco de Jericó com o Diácono Romulo Canuto e veja Deus agir em sua vida." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<style>
+  /* ===== DESIGN TOKENS ===== */
+  :root{
+    --gold:        #C9A24B;
+    --gold-bright: #E0B85C;
+    --gold-soft:   #EBD39A;
+    --cream:       #F6ECD2;
+    --cream-white: #FBF7EE;
+    --navy:        #0C1225;
+    --navy-2:      #141C38;
+    --navy-3:      #1E2A4E;
+    --ink:         #1C2237;
+    --muted:       #5B6478;
+    --line:        rgba(201,162,75,.28);
+    --shadow-lg:   0 30px 70px -30px rgba(8,12,26,.55);
+    --radius:      20px;
+    --wa:          #25D366;
+    --wa-dark:     #128C4B;
+    /* >>> Troque este link pelo convite do seu Grupo do WhatsApp <<< */
+    --maxw: 1180px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    color:var(--ink);
+    background:var(--cream-white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{ max-width:100%; display:block; }
+  a{ text-decoration:none; color:inherit; }
+
+  .wrap{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+  .serif{ font-family:'Cinzel', serif; }
+
+  /* ===== BUTTONS ===== */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:12px;
+    font-family:'Inter',sans-serif; font-weight:700; font-size:1.05rem;
+    padding:18px 34px; border-radius:60px; border:0; cursor:pointer;
+    letter-spacing:.2px; line-height:1.2; text-align:center;
+    transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+  }
+  .btn-gold{
+    background:linear-gradient(180deg,var(--gold-bright),var(--gold));
+    color:#2A2005;
+    box-shadow:0 18px 35px -14px rgba(201,162,75,.75), inset 0 1px 0 rgba(255,255,255,.4);
+  }
+  .btn-gold:hover{ transform:translateY(-3px); box-shadow:0 24px 44px -14px rgba(201,162,75,.9); }
+  .btn-wa{
+    background:linear-gradient(180deg,#2BE377,var(--wa));
+    color:#053019;
+    box-shadow:0 18px 35px -14px rgba(37,211,102,.7), inset 0 1px 0 rgba(255,255,255,.4);
+  }
+  .btn-wa:hover{ transform:translateY(-3px); box-shadow:0 24px 46px -14px rgba(37,211,102,.9); }
+  .btn .wa-ico{ width:22px; height:22px; flex:none; }
+  .btn-lg{ font-size:1.15rem; padding:20px 40px; }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'Inter',sans-serif; font-weight:700; font-size:.78rem;
+    letter-spacing:.22em; text-transform:uppercase;
+    color:var(--gold);
+  }
+  .eyebrow::before, .eyebrow::after{ content:""; width:34px; height:1px; background:var(--gold); opacity:.6; }
+  .eyebrow.solo::after{ display:none; }
+
+  /* ===== LOGO (SVG recreation) ===== */
+  .logo-mark{ display:block; }
+
+  /* =========================================================
+     HERO
+  ========================================================= */
+  .hero{
+    position:relative; color:#fff; overflow:hidden;
+    /* Cathedral fallback gradient. Drop your banner at assets/hero-banner.jpg
+       and it will layer on top automatically. */
+    background:
+      radial-gradient(120% 90% at 85% 20%, rgba(224,184,92,.20), transparent 55%),
+      linear-gradient(180deg, #0B1024 0%, #10182F 45%, #0A0F20 100%);
+  }
+  .hero__photo{
+    position:absolute; inset:0; z-index:0;
+    background-image:url('assets/hero-banner.jpg');
+    background-size:cover; background-position:center right;
+    opacity:0; transition:opacity .6s ease;
+  }
+  .hero__veil{
+    position:absolute; inset:0; z-index:1;
+    background:linear-gradient(90deg, rgba(8,12,26,.92) 0%, rgba(8,12,26,.78) 38%, rgba(8,12,26,.30) 70%, rgba(8,12,26,.15) 100%);
+    pointer-events:none;
+  }
+  /* subtle gothic pillars texture using repeating gradient */
+  .hero__pillars{
+    position:absolute; inset:0; z-index:0; opacity:.10; pointer-events:none;
+    background:repeating-linear-gradient(90deg, transparent 0 78px, rgba(235,211,154,.5) 78px 80px);
+    -webkit-mask-image:linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent);
+            mask-image:linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent);
+  }
+  .hero__inner{
+    position:relative; z-index:2;
+    display:grid; grid-template-columns:1.15fr .85fr; gap:40px; align-items:center;
+    min-height:88vh; padding:70px 0 80px;
+  }
+  .hero__logo{ margin-bottom:26px; }
+  .hero h1{
+    font-family:'Cinzel',serif; font-weight:800;
+    font-size:clamp(2rem, 4.4vw, 3.35rem); line-height:1.12; letter-spacing:.5px;
+    text-shadow:0 4px 30px rgba(0,0,0,.5);
+  }
+  .hero h1 .hl{ color:var(--gold-soft); }
+  .hero__date{
+    margin-top:22px; font-size:clamp(1.05rem,1.7vw,1.3rem); font-weight:600; color:var(--cream);
+  }
+  .hero__date strong{ color:var(--gold-bright); border-bottom:2px solid var(--gold); padding-bottom:1px; }
+  .hero__lead{
+    margin-top:14px; font-size:1.06rem; color:rgba(255,255,255,.82); max-width:520px;
+  }
+  .hero__lead strong{ color:#fff; }
+  .hero__badge{
+    display:inline-flex; align-items:center; gap:10px; margin-top:20px;
+    background:rgba(235,211,154,.12); border:1px solid var(--line);
+    padding:9px 18px; border-radius:60px; font-size:.92rem; font-weight:600; color:var(--cream);
+    backdrop-filter:blur(4px);
+  }
+  .hero__badge .dot{ width:8px; height:8px; border-radius:50%; background:var(--gold-bright); box-shadow:0 0 0 4px rgba(224,184,92,.25); }
+  .hero__cta{ margin-top:34px; display:flex; flex-wrap:wrap; gap:14px; align-items:center; }
+  .hero__micro{ font-size:.85rem; color:rgba(255,255,255,.6); }
+
+  /* right side deacon frame */
+  .hero__side{ position:relative; display:flex; justify-content:center; }
+  .hero__ring{
+    position:relative; width:min(360px,80%); aspect-ratio:3/4; border-radius:200px 200px 24px 24px;
+    background:
+      radial-gradient(80% 60% at 50% 15%, rgba(224,184,92,.35), transparent 60%),
+      linear-gradient(180deg, rgba(235,211,154,.10), rgba(20,28,56,.4));
+    border:1px solid var(--line);
+    display:flex; align-items:flex-end; justify-content:center; overflow:hidden;
+    box-shadow:0 40px 90px -30px rgba(0,0,0,.7), inset 0 0 60px rgba(224,184,92,.08);
+  }
+  .hero__ring img{ width:100%; height:100%; object-fit:cover; object-position:top center; }
+  .hero__ring .glow{ position:absolute; inset:0; box-shadow:inset 0 -80px 90px -50px rgba(12,18,37,.9); pointer-events:none; }
+
+  /* =========================================================
+     SECTION SHELL
+  ========================================================= */
+  section{ position:relative; }
+  .sec{ padding:96px 0; }
+  .sec-head{ text-align:center; max-width:760px; margin:0 auto 54px; }
+  .sec-head h2{
+    font-family:'Cinzel',serif; font-weight:700; color:var(--ink);
+    font-size:clamp(1.7rem,3.2vw,2.5rem); line-height:1.18; margin-top:14px;
+  }
+  .sec-head p{ margin-top:14px; color:var(--muted); font-size:1.1rem; }
+  .light{ background:var(--cream-white); }
+  .cream{ background:linear-gradient(180deg,#FBF7EE, #F3E9D2); }
+
+  /* ===== INTRO / FALTA SÓ VOCÊ ===== */
+  .intro-card{
+    max-width:880px; margin:0 auto; background:#fff; border:1px solid var(--line);
+    border-radius:26px; padding:44px; box-shadow:var(--shadow-lg);
+    display:grid; grid-template-columns:auto 1fr; gap:34px; align-items:center;
+  }
+  .intro-photo{
+    width:130px; height:130px; border-radius:50%; flex:none;
+    background:linear-gradient(180deg,var(--gold-soft),var(--gold));
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 16px 30px -14px rgba(201,162,75,.7);
+  }
+  .intro-photo img{ width:118px; height:118px; border-radius:50%; object-fit:cover; }
+  .intro-photo .ph-mono{ font-family:'Cinzel',serif; color:#3a2c07; }
+  .intro-card p.quote{ font-size:1.12rem; color:var(--ink); }
+  .intro-card p.quote strong{ color:#9a7420; }
+  .intro-sign{ margin-top:16px; font-family:'Cinzel',serif; font-weight:700; color:var(--gold); }
+
+  /* ===== WHATSAPP BAND ===== */
+  .wa-band{
+    background:
+      radial-gradient(90% 120% at 12% 10%, rgba(37,211,102,.18), transparent 55%),
+      linear-gradient(180deg, #0E1428, #0B1022);
+    color:#fff; padding:82px 0;
+  }
+  .wa-grid{ display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+  .wa-copy h2{ font-family:'Cinzel',serif; font-size:clamp(1.6rem,3vw,2.3rem); line-height:1.2; }
+  .wa-copy p{ margin-top:16px; color:rgba(255,255,255,.8); font-size:1.08rem; max-width:480px; }
+  .wa-points{ margin:24px 0 30px; display:grid; gap:12px; }
+  .wa-point{ display:flex; align-items:center; gap:12px; font-weight:500; }
+  .wa-point .ck{ width:26px; height:26px; border-radius:50%; background:rgba(37,211,102,.15); border:1px solid rgba(37,211,102,.5); display:flex; align-items:center; justify-content:center; flex:none; }
+  .wa-card{
+    background:linear-gradient(180deg,#12321f,#0d2618);
+    border:1px solid rgba(37,211,102,.28); border-radius:26px; padding:42px 38px; text-align:center;
+    box-shadow:var(--shadow-lg);
+  }
+  .wa-card .wa-logo{ width:74px; height:74px; margin:0 auto 18px; }
+  .wa-card h3{ font-family:'Cinzel',serif; font-size:1.5rem; color:var(--cream); }
+  .wa-card p{ color:rgba(255,255,255,.72); margin:12px 0 26px; }
+
+  /* ===== 7 NIGHTS ===== */
+  .nights{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px; max-width:960px; margin:0 auto; }
+  .night{
+    position:relative; display:grid; grid-template-columns:auto 1fr; gap:22px; align-items:flex-start;
+    background:#fff; border:1px solid var(--line); border-radius:18px; padding:26px 28px;
+    box-shadow:0 18px 40px -30px rgba(20,28,56,.5); transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .night:hover{ transform:translateY(-4px); box-shadow:0 26px 50px -28px rgba(20,28,56,.6); }
+  .night__num{
+    flex:none; width:62px; height:62px; border-radius:16px;
+    background:linear-gradient(160deg,var(--navy-3),var(--navy)); color:var(--gold-bright);
+    font-family:'Cinzel',serif; font-weight:700; font-size:1.7rem;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:inset 0 0 0 1px var(--line), 0 12px 24px -14px rgba(12,18,37,.6);
+  }
+  .night__body h3{ font-family:'Cinzel',serif; font-size:1.12rem; color:var(--ink); line-height:1.3; }
+  .night__body p{ margin-top:7px; color:var(--muted); font-size:.98rem; }
+  .night--wide{ grid-column:1 / -1; background:linear-gradient(120deg,#141C38,#1E2A4E); border-color:var(--line); }
+  .night--wide .night__num{ background:linear-gradient(160deg,var(--gold-bright),var(--gold)); color:#2a2005; }
+  .night--wide h3{ color:var(--cream); }
+  .night--wide p{ color:rgba(255,255,255,.72); }
+
+  /* ===== TESTIMONIALS ===== */
+  .testi-band{ background:linear-gradient(180deg,#141C38,#0E1428); color:#fff; }
+  .testi-band .sec-head h2{ color:#fff; }
+  .testi-band .sec-head p{ color:rgba(255,255,255,.72); }
+  .testi-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .testi{
+    background:rgba(255,255,255,.04); border:1px solid rgba(235,211,154,.18);
+    border-radius:18px; padding:26px; backdrop-filter:blur(3px);
+  }
+  .testi__top{ display:flex; align-items:center; gap:14px; margin-bottom:16px; }
+  .testi__av{ width:48px; height:48px; border-radius:50%; flex:none; display:flex; align-items:center; justify-content:center; font-weight:700; color:#fff; font-family:'Cinzel',serif; }
+  .testi__name{ font-weight:700; }
+  .testi__city{ font-size:.85rem; color:rgba(255,255,255,.6); }
+  .testi p.text{ color:rgba(255,255,255,.85); font-size:.97rem; }
+  .testi .stars{ color:var(--gold-bright); margin-bottom:10px; letter-spacing:2px; font-size:.9rem; }
+
+  /* ===== FINAL CTA ===== */
+  .final{
+    position:relative; color:#fff; overflow:hidden;
+    background:
+      radial-gradient(90% 120% at 80% 0%, rgba(224,184,92,.20), transparent 55%),
+      linear-gradient(180deg,#0B1022,#141C38);
+    padding:100px 0;
+  }
+  .final__pillars{ position:absolute; inset:0; opacity:.08; background:repeating-linear-gradient(90deg, transparent 0 70px, rgba(235,211,154,.6) 70px 72px); -webkit-mask-image:linear-gradient(180deg,transparent,#000,transparent); mask-image:linear-gradient(180deg,transparent,#000,transparent); }
+  .final__inner{ position:relative; z-index:1; text-align:center; max-width:820px; margin:0 auto; }
+  .final h2{ font-family:'Cinzel',serif; font-size:clamp(1.9rem,3.6vw,2.8rem); line-height:1.15; }
+  .final h2 .hl{ color:var(--gold-soft); }
+  .final p.sub{ margin-top:16px; color:rgba(255,255,255,.8); font-size:1.15rem; }
+  .info-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:44px 0; }
+  .info-box{
+    background:rgba(255,255,255,.05); border:1px solid var(--line); border-radius:18px; padding:26px 18px;
+  }
+  .info-box .lbl{ font-family:'Cinzel',serif; color:var(--gold-bright); font-size:1rem; letter-spacing:.5px; }
+  .info-box .val{ margin-top:8px; font-size:1.15rem; font-weight:700; }
+  .info-box .val span{ display:block; font-size:.9rem; font-weight:500; color:rgba(255,255,255,.7); }
+  .final__micro{ color:rgba(255,255,255,.72); font-size:.98rem; margin-bottom:26px; }
+  .final__micro strong{ color:var(--gold-soft); }
+
+  /* ===== FOOTER ===== */
+  footer{ background:#080B16; color:rgba(255,255,255,.6); padding:64px 0 40px; text-align:center; }
+  .foot-logo{ width:210px; margin:0 auto 26px; opacity:.95; }
+  footer .tag{ font-family:'Cinzel',serif; color:var(--cream); font-size:1.05rem; letter-spacing:1px; }
+  .foot-div{ width:220px; height:1px; background:var(--line); margin:22px auto; }
+  footer .brand{ font-weight:600; color:rgba(255,255,255,.75); }
+  footer .disc{ max-width:640px; margin:20px auto 0; font-size:.78rem; line-height:1.7; color:rgba(255,255,255,.4); }
+
+  /* ===== FLOATING WA ===== */
+  .fab{
+    position:fixed; right:20px; bottom:20px; z-index:50;
+    width:60px; height:60px; border-radius:50%;
+    background:linear-gradient(180deg,#2BE377,var(--wa));
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 14px 30px -8px rgba(37,211,102,.7);
+    animation:pulse 2.4s infinite;
+  }
+  .fab svg{ width:32px; height:32px; }
+  @keyframes pulse{ 0%{ box-shadow:0 0 0 0 rgba(37,211,102,.5);} 70%{ box-shadow:0 0 0 18px rgba(37,211,102,0);} 100%{ box-shadow:0 0 0 0 rgba(37,211,102,0);} }
+
+  /* reveal */
+  .reveal{ opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 940px){
+    .hero__inner{ grid-template-columns:1fr; min-height:auto; padding:56px 0 60px; text-align:left; }
+    .hero__side{ order:-1; margin-bottom:8px; }
+    .hero__ring{ width:min(300px,72%); }
+    .hero__veil{ background:linear-gradient(180deg, rgba(8,12,26,.72), rgba(8,12,26,.92)); }
+    .wa-grid{ grid-template-columns:1fr; }
+    .nights{ grid-template-columns:1fr; }
+    .testi-grid{ grid-template-columns:1fr; }
+    .info-row{ grid-template-columns:1fr; }
+    .intro-card{ grid-template-columns:1fr; text-align:center; padding:34px 26px; }
+    .intro-photo{ margin:0 auto; }
+  }
+  @media (max-width:520px){
+    .wrap{ padding:0 18px; }
+    .sec{ padding:70px 0; }
+    .btn{ width:100%; }
+    .hero__cta{ flex-direction:column; align-items:stretch; }
+    .night{ padding:22px; gap:16px; }
+    .night__num{ width:52px; height:52px; font-size:1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================= HERO ============================= -->
+<header class="hero">
+  <div class="hero__photo" id="heroPhoto"></div>
+  <div class="hero__pillars"></div>
+  <div class="hero__veil"></div>
+
+  <div class="wrap">
+    <div class="hero__inner">
+      <div class="hero__left">
+        <!-- LOGO -->
+        <div class="hero__logo">
+          <svg class="logo-mark" width="270" height="126" viewBox="0 0 300 140" fill="none" aria-label="Cerco de Jericó" xmlns="http://www.w3.org/2000/svg">
+            <use href="#cercoLogo" />
+          </svg>
+        </div>
+
+        <h1>7 Noites de Oração <span class="hl">Estratégica</span><br />Para Derrubar as Muralhas<br />Que Impedem Sua Vitória</h1>
+
+        <p class="hero__date">De <strong>03 a 09 de agosto de 2026, às 22h</strong> — ao vivo.</p>
+        <p class="hero__lead">Participe do <strong>CERCO DE JERICÓ</strong> e veja Deus agir em sua vida profissional, familiar e pessoal.</p>
+
+        <span class="hero__badge"><span class="dot"></span> Com o Diácono Romulo Canuto</span>
+
+        <div class="hero__cta">
+          <a class="btn btn-gold btn-lg" href="#inscricao">Quero participar do Cerco</a>
+        </div>
+      </div>
+
+      <div class="hero__side">
+        <div class="hero__ring">
+          <!-- Drop the deacon's cutout at assets/diacono.png to replace the emblem -->
+          <img src="assets/diacono.png" alt="Diácono Romulo Canuto"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="hero__emblem" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;">
+            <svg width="180" height="180" viewBox="0 0 120 120"><use href="#monstrance"/></svg>
+          </div>
+          <div class="glow"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============================= INTRO ============================= -->
+<section class="sec light">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow solo">Começamos o Cerco de Jericó</span>
+      <h2>Falta só você!</h2>
+    </div>
+
+    <div class="intro-card reveal">
+      <div class="intro-photo">
+        <img src="assets/diacono.png" alt="Diácono Romulo Canuto"
+             onerror="this.style.display='none'; this.parentElement.querySelector('.ph-mono').style.display='block';" />
+        <span class="ph-mono" style="display:none; font-size:2.4rem;">RC</span>
+      </div>
+      <div>
+        <p class="quote">"Eu sou o Diácono Romulo Canuto, e durante 7 noites conduzirei você em uma jornada de fé e oração para derrubar as muralhas que impedem as <strong>bênçãos em sua vida</strong>. Juntos vamos viver uma experiência transformadora!"</p>
+        <p class="intro-sign">— Diácono Romulo Canuto</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= WHATSAPP BAND (replaces native form) ============================= -->
+<section class="wa-band" id="inscricao">
+  <div class="wrap">
+    <div class="wa-grid">
+      <div class="wa-copy reveal">
+        <span class="eyebrow solo">Sua vaga é gratuita</span>
+        <h2>Entre no nosso Grupo do WhatsApp e receba tudo em primeira mão</h2>
+        <p>Sem formulários complicados. Um clique e você já está dentro — receba os links das transmissões, lembretes de cada noite e os avisos do Cerco direto no seu WhatsApp.</p>
+        <div class="wa-points">
+          <div class="wa-point"><span class="ck">✓</span> Links das 7 transmissões ao vivo</div>
+          <div class="wa-point"><span class="ck">✓</span> Lembrete diário antes de cada noite</div>
+          <div class="wa-point"><span class="ck">✓</span> Espaço para enviar seus pedidos de oração</div>
+        </div>
+        <a class="btn btn-wa btn-lg wa-link" href="#">
+          <svg class="wa-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 01-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.38 9.38 0 01-1.44-5.01c0-5.19 4.23-9.41 9.43-9.41 2.52 0 4.88.98 6.66 2.76a9.35 9.35 0 012.75 6.66c0 5.19-4.23 9.42-9.42 9.42zM20.5 3.49A11.8 11.8 0 0012.05.5C5.6.5.36 5.74.36 12.18c0 2.05.54 4.05 1.56 5.82L.26 24l6.13-1.6a11.68 11.68 0 005.65 1.44h.01c6.44 0 11.68-5.24 11.68-11.68 0-3.12-1.21-6.05-3.23-8.27z"/></svg>
+          Entrar no Grupo do WhatsApp
+        </a>
+      </div>
+
+      <div class="wa-card reveal">
+        <svg class="wa-logo" viewBox="0 0 120 120"><use href="#monstrance"/></svg>
+        <h3>Cerco de Jericó</h3>
+        <p>De 03 a 09 de agosto de 2026, às 22h, ao vivo.<br />Participe e veja Deus agir na sua vida.</p>
+        <a class="btn btn-wa wa-link" href="#" style="width:100%;">
+          <svg class="wa-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 01-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.38 9.38 0 01-1.44-5.01c0-5.19 4.23-9.41 9.43-9.41 2.52 0 4.88.98 6.66 2.76a9.35 9.35 0 012.75 6.66c0 5.19-4.23 9.42-9.42 9.42z"/></svg>
+          Quero entrar agora
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= 7 NIGHTS ============================= -->
+<section class="sec cream">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow solo">O que você vai experimentar</span>
+      <h2>As 7 Noites de Transformação e Bênçãos</h2>
+      <p>Cada noite do Cerco carrega um propósito. Caminhe conosco até a queda das muralhas.</p>
+    </div>
+
+    <div class="nights">
+      <div class="night reveal">
+        <div class="night__num">1</div>
+        <div class="night__body"><h3>Bênçãos na Vida Profissional</h3><p>Derrube as barreiras que impedem seu crescimento profissional e financeiro.</p></div>
+      </div>
+      <div class="night reveal">
+        <div class="night__num">2</div>
+        <div class="night__body"><h3>Restauração Familiar</h3><p>Veja Deus restaurar relacionamentos e trazer paz para a sua família.</p></div>
+      </div>
+      <div class="night reveal">
+        <div class="night__num">3</div>
+        <div class="night__body"><h3>Cura Interior</h3><p>Experimente a cura emocional e espiritual que o seu coração precisa.</p></div>
+      </div>
+      <div class="night reveal">
+        <div class="night__num">4</div>
+        <div class="night__body"><h3>Quebra de Maldições</h3><p>Rompa com ciclos negativos e heranças malditas em sua linhagem.</p></div>
+      </div>
+      <div class="night reveal">
+        <div class="night__num">5</div>
+        <div class="night__body"><h3>Vitória Espiritual</h3><p>Alcance vitórias impossíveis através do poder da oração em conjunto.</p></div>
+      </div>
+      <div class="night reveal">
+        <div class="night__num">6</div>
+        <div class="night__body"><h3>Vivendo o Sobrenatural</h3><p>Testemunhe o poder de Deus operando milagres em sua vida.</p></div>
+      </div>
+      <div class="night night--wide reveal">
+        <div class="night__num">7</div>
+        <div class="night__body"><h3>A Queda das Muralhas</h3><p>A noite da vitória. Assim como em Jericó, no sétimo dia as muralhas caem — e a bênção que estava retida é finalmente liberada sobre a sua vida.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= TESTIMONIALS ============================= -->
+<section class="sec testi-band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow solo">Testemunhos de fé</span>
+      <h2>Bênçãos que já aconteceram</h2>
+      <p>O próximo pode ser o seu.</p>
+    </div>
+
+    <div class="testi-grid">
+      <div class="testi reveal">
+        <div class="testi__top"><div class="testi__av" style="background:#7A3FA0">M</div><div><div class="testi__name">Maria Silva</div><div class="testi__city">São Paulo, SP</div></div></div>
+        <div class="stars">★★★★★</div>
+        <p class="text">"Após o Cerco de Jericó, consegui o emprego dos meus sonhos! As portas se abriram de forma sobrenatural. Glória a Deus!"</p>
+      </div>
+      <div class="testi reveal">
+        <div class="testi__top"><div class="testi__av" style="background:#1F6E8C">J</div><div><div class="testi__name">Josefa Santos</div><div class="testi__city">Rio de Janeiro, RJ</div></div></div>
+        <div class="stars">★★★★★</div>
+        <p class="text">"Meu casamento estava destruído. Durante as 7 noites, Deus restaurou nossa família completamente. Hoje somos mais unidos que nunca!"</p>
+      </div>
+      <div class="testi reveal">
+        <div class="testi__top"><div class="testi__av" style="background:#B0338B">A</div><div><div class="testi__name">Ana Costa</div><div class="testi__city">Belo Horizonte, MG</div></div></div>
+        <div class="stars">★★★★★</div>
+        <p class="text">"Estava com depressão há anos. No terceiro dia do evento, senti uma paz sobrenatural. Hoje sou uma nova pessoa!"</p>
+      </div>
+      <div class="testi reveal">
+        <div class="testi__top"><div class="testi__av" style="background:#8A6D1B">C</div><div><div class="testi__name">Carlos Oliveira</div><div class="testi__city">Salvador, BA</div></div></div>
+        <div class="stars">★★★★★</div>
+        <p class="text">"Vivia sem rumo e sufocado por dívidas. Durante o Cerco, minha vida financeira começou a se reerguer. Deus honrou a minha fé!"</p>
+      </div>
+      <div class="testi reveal">
+        <div class="testi__top"><div class="testi__av" style="background:#2E7D4F">L</div><div><div class="testi__name">Lucia Ferreira</div><div class="testi__city">Fortaleza, CE</div></div></div>
+        <div class="stars">★★★★★</div>
+        <p class="text">"Tentava engravidar há 8 anos. No último dia do evento, recebi a confirmação: estava grávida! Meu milagre chegou!"</p>
+      </div>
+      <div class="testi reveal">
+        <div class="testi__top"><div class="testi__av" style="background:#A23B3B">R</div><div><div class="testi__name">Roberto Lima</div><div class="testi__city">Recife, PE</div></div></div>
+        <div class="stars">★★★★★</div>
+        <p class="text">"Estava viciado em drogas há 15 anos. Durante o Cerco, Deus me libertou completamente. Hoje ajudo outros a se libertarem também!"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= FINAL CTA ============================= -->
+<section class="final">
+  <div class="final__pillars"></div>
+  <div class="wrap">
+    <div class="final__inner">
+      <h2 class="reveal">As muralhas da sua vida <span class="hl">podem cair!</span></h2>
+      <p class="sub reveal">Não perca esta oportunidade única de participar do CERCO DE JERICÓ.</p>
+
+      <div class="info-row reveal">
+        <div class="info-box">
+          <div class="lbl">Data do Evento</div>
+          <div class="val">03 a 09 de agosto<span>de 2026</span></div>
+        </div>
+        <div class="info-box">
+          <div class="lbl">Horário</div>
+          <div class="val">22h<span>ao vivo</span></div>
+        </div>
+        <div class="info-box">
+          <div class="lbl">7 Noites</div>
+          <div class="val">de Oração<span>desbloqueando milagres</span></div>
+        </div>
+      </div>
+
+      <p class="final__micro reveal">✝ Sua inscrição é <strong>gratuita</strong> e você receberá todas as informações pelo WhatsApp.</p>
+      <div class="reveal">
+        <a class="btn btn-gold btn-lg wa-link" href="#">Quero entrar no Grupo do WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= FOOTER ============================= -->
+<footer>
+  <div class="wrap">
+    <!-- CERCO DE JERICÓ logo (cream) -->
+    <svg class="foot-logo" viewBox="0 0 300 140" fill="none" aria-label="Cerco de Jericó" xmlns="http://www.w3.org/2000/svg"><use href="#cercoLogo"/></svg>
+    <p class="tag">Uma experiência de fé que pode transformar a sua vida</p>
+    <div class="foot-div"></div>
+    <p class="brand">CERCO DE JERICÓ — 2026 · Star Treinamentos</p>
+    <p class="disc">Este produto não garante a obtenção de resultados. Qualquer referência ao desempenho de uma estratégia não deve ser interpretada como uma garantia de resultados.</p>
+  </div>
+</footer>
+
+<!-- ============================= FLOATING WHATSAPP ============================= -->
+<a class="fab wa-link" href="#" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#053019"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 01-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.38 9.38 0 01-1.44-5.01c0-5.19 4.23-9.41 9.43-9.41 2.52 0 4.88.98 6.66 2.76a9.35 9.35 0 012.75 6.66c0 5.19-4.23 9.42-9.42 9.42z"/></svg>
+</a>
+
+<!-- ============================= SVG DEFS (logo + monstrance) ============================= -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Monstrance / ostensório emblem -->
+    <g id="monstrance">
+      <g fill="none" stroke="#EBD39A" stroke-width="2.2">
+        <!-- rays -->
+        <g stroke-linecap="round">
+          <line x1="60" y1="18" x2="60" y2="6"/><line x1="60" y1="102" x2="60" y2="114"/>
+          <line x1="18" y1="60" x2="6" y2="60"/><line x1="102" y1="60" x2="114" y2="60"/>
+          <line x1="30" y1="30" x2="21" y2="21"/><line x1="90" y1="30" x2="99" y2="21"/>
+          <line x1="30" y1="90" x2="21" y2="99"/><line x1="90" y1="90" x2="99" y2="99"/>
+          <line x1="44" y1="22" x2="39" y2="11"/><line x1="76" y1="22" x2="81" y2="11"/>
+          <line x1="44" y1="98" x2="39" y2="109"/><line x1="76" y1="98" x2="81" y2="109"/>
+          <line x1="22" y1="44" x2="11" y2="39"/><line x1="98" y1="44" x2="109" y2="39"/>
+          <line x1="22" y1="76" x2="11" y2="81"/><line x1="98" y1="76" x2="109" y2="81"/>
+        </g>
+        <circle cx="60" cy="60" r="24"/>
+        <circle cx="60" cy="60" r="17"/>
+      </g>
+      <!-- cross inside host -->
+      <g stroke="#EBD39A" stroke-width="3" stroke-linecap="round">
+        <line x1="60" y1="50" x2="60" y2="70"/>
+        <line x1="52" y1="58" x2="68" y2="58"/>
+      </g>
+    </g>
+
+    <!-- Full CERCO DE JERICÓ lockup -->
+    <g id="cercoLogo">
+      <!-- top row: CERC (o) DE with emblem replacing the O -->
+      <text x="34" y="46" font-family="Cinzel, serif" font-weight="700" font-size="40" letter-spacing="2" fill="#F6ECD2">CERC</text>
+      <g transform="translate(150,8) scale(0.56)"><use href="#monstrance"/></g>
+      <text x="222" y="42" font-family="Cinzel, serif" font-weight="700" font-size="26" letter-spacing="1" fill="#F6ECD2">DE</text>
+      <!-- bottom row: JERICÓ -->
+      <text x="150" y="118" text-anchor="middle" font-family="Cinzel, serif" font-weight="800" font-size="62" letter-spacing="3" fill="#F6ECD2">JERICÓ</text>
+    </g>
+  </defs>
+</svg>
+
+<script>
+  // ===== WhatsApp group link — TROQUE aqui pelo convite do seu grupo =====
+  var WHATSAPP_LINK = "https://chat.whatsapp.com/SEU-CONVITE-AQUI";
+  document.querySelectorAll('.wa-link').forEach(function(a){
+    a.setAttribute('href', WHATSAPP_LINK);
+    a.setAttribute('target', '_blank');
+    a.setAttribute('rel', 'noopener');
+  });
+
+  // Reveal on scroll
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:.14 });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // Show hero banner photo only if the file exists
+  (function(){
+    var img = new Image();
+    img.onload = function(){ document.getElementById('heroPhoto').style.opacity = 1; };
+    img.src = 'assets/hero-banner.jpg';
+  })();
+</script>
+</body>
+</html>

@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
 <style>
   /* ========== PALETTE — navy · gold · cream (one system) ========== */
@@ -43,7 +43,7 @@
   img{ max-width:100%; display:block; }
   a{ text-decoration:none; color:inherit; }
   .wrap{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 24px; }
-  .serif{ font-family:'Cinzel',serif; }
+  .serif{ font-family:'Cormorant Garamond',serif; }
 
   /* ========== BUTTONS ========== */
   .btn{
@@ -73,13 +73,40 @@
   /* ========== SECTION SHELL ========== */
   .sec{ padding:100px 0; }
   .sec-head{ text-align:center; max-width:740px; margin:0 auto 56px; }
-  .sec-head h2{ font-family:'Cinzel',serif; font-weight:700; font-size:clamp(1.7rem,3.2vw,2.5rem);
+  .sec-head h2{ font-family:'Cormorant Garamond',serif; font-weight:700; font-size:clamp(1.7rem,3.2vw,2.5rem);
     line-height:1.16; margin-top:14px; color:var(--ink); }
   .sec-head p{ margin-top:14px; color:var(--muted); font-size:1.1rem; }
   .paper{ background:var(--paper); }
   .paper2{ background:linear-gradient(180deg,var(--paper),var(--paper-2)); }
   .on-dark .sec-head h2{ color:#fff; }
   .on-dark .sec-head p{ color:rgba(255,255,255,.72); }
+
+  /* ========== TOP HIGHLIGHT BAR ========== */
+  .topbar{ position:relative; z-index:3; display:flex; align-items:center; justify-content:center; gap:14px;
+    flex-wrap:wrap; text-align:center; padding:11px 18px;
+    background:linear-gradient(90deg,var(--gold) 0%, var(--gold-bright) 50%, var(--gold) 100%);
+    color:#2A2005; font-weight:700; font-size:.83rem; letter-spacing:.06em; }
+  .topbar .sep{ opacity:.5; }
+  .topbar .live{ display:inline-flex; align-items:center; gap:7px; }
+  .topbar .live .pulse{ width:7px; height:7px; border-radius:50%; background:#b23028;
+    box-shadow:0 0 0 0 rgba(178,48,40,.6); animation:blink 1.6s infinite; }
+  @media (max-width:560px){ .topbar{ font-size:.72rem; gap:8px; } .topbar .hide-sm{ display:none; } }
+
+  /* ========== SCRIPTURE ========== */
+  .scripture{ position:relative; text-align:center; padding:92px 0;
+    background:radial-gradient(70% 120% at 50% 0%, #F3E7CB, var(--paper-2)); }
+  .scripture::before,.scripture::after{ content:""; position:absolute; left:50%; transform:translateX(-50%);
+    width:64px; height:1px; background:var(--gold); opacity:.5; }
+  .scripture::before{ top:44px; } .scripture::after{ bottom:44px; }
+  .scripture__inner{ max-width:840px; margin:0 auto; padding:0 24px; }
+  .scripture__mark{ font-family:'Cormorant Garamond',serif; font-weight:700; font-size:4.4rem; color:var(--gold);
+    line-height:0; height:34px; display:block; }
+  .scripture blockquote{ font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600;
+    font-size:clamp(1.5rem,3vw,2.15rem); line-height:1.42; color:var(--ink); text-wrap:balance; }
+  .scripture cite{ display:inline-flex; align-items:center; gap:12px; margin-top:24px; font-style:normal;
+    font-family:'Inter',sans-serif; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+    font-size:.82rem; color:#9a7420; }
+  .scripture cite::before{ content:""; width:26px; height:2px; background:var(--gold); }
 
   /* ========== HERO ========== */
   .hero{ position:relative; min-height:92vh; display:flex; align-items:flex-end;
@@ -93,8 +120,8 @@
   .hero__inner{ position:relative; z-index:2; width:100%; padding:0 0 76px; }
   .hero__content{ max-width:600px; }
   .hero__logo{ width:230px; max-width:56vw; margin-bottom:26px; filter:drop-shadow(0 6px 24px rgba(0,0,0,.5)); }
-  .hero h1{ font-family:'Cinzel',serif; font-weight:800; letter-spacing:.5px;
-    font-size:clamp(1.85rem,3.9vw,3.05rem); line-height:1.14; text-wrap:balance;
+  .hero h1{ font-family:'Cormorant Garamond',serif; font-weight:700; letter-spacing:.3px;
+    font-size:clamp(2.1rem,4.4vw,3.5rem); line-height:1.1; text-wrap:balance;
     text-shadow:0 4px 30px rgba(0,0,0,.55); }
   .hero h1 .hl{ color:var(--gold-soft); }
   .hero__date{ margin-top:22px; font-size:clamp(1.05rem,1.7vw,1.28rem); font-weight:600; color:var(--cream); }
@@ -118,11 +145,11 @@
     border-radius:16px; pointer-events:none; mix-blend-mode:overlay; }
   .intro__badge{ position:absolute; left:50%; bottom:-22px; transform:translateX(-50%);
     background:linear-gradient(180deg,var(--navy-800),var(--navy-700)); color:var(--cream);
-    font-family:'Cinzel',serif; font-size:.9rem; letter-spacing:1px; padding:10px 22px; border-radius:40px;
+    font-family:'Cormorant Garamond',serif; font-size:.9rem; letter-spacing:1px; padding:10px 22px; border-radius:40px;
     border:1px solid var(--line); white-space:nowrap; }
   .intro__body blockquote{ font-size:1.22rem; line-height:1.6; color:var(--ink); font-weight:500; }
   .intro__body blockquote strong{ color:#916d1c; }
-  .intro__sign{ margin-top:20px; font-family:'Cinzel',serif; font-weight:700; color:var(--gold);
+  .intro__sign{ margin-top:20px; font-family:'Cormorant Garamond',serif; font-weight:700; color:var(--gold);
     display:flex; align-items:center; gap:12px; }
   .intro__sign::before{ content:""; width:34px; height:2px; background:var(--gold); }
   .intro__cta{ margin-top:28px; }
@@ -130,7 +157,7 @@
   /* ========== WHATSAPP BAND ========== */
   .wa-band{ background:linear-gradient(180deg,var(--navy-900),var(--navy-800)); color:#fff; padding:88px 0; }
   .wa-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:50px; align-items:center; }
-  .wa-copy h2{ font-family:'Cinzel',serif; font-size:clamp(1.55rem,2.9vw,2.25rem); line-height:1.2; margin-top:14px; color:#fff; }
+  .wa-copy h2{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.55rem,2.9vw,2.25rem); line-height:1.2; margin-top:14px; color:#fff; }
   .wa-copy>p{ margin-top:16px; color:rgba(255,255,255,.78); font-size:1.06rem; max-width:460px; }
   .wa-points{ margin:26px 0 32px; display:grid; gap:13px; }
   .wa-point{ display:flex; align-items:center; gap:13px; font-weight:500; color:rgba(255,255,255,.9); }
@@ -140,7 +167,7 @@
   .wa-card{ background:linear-gradient(180deg,var(--navy-700),var(--navy-800));
     border:1px solid var(--line); border-radius:26px; padding:40px 36px; text-align:center; box-shadow:var(--shadow); }
   .wa-card__logo{ width:96px; margin:0 auto 18px; }
-  .wa-card h3{ font-family:'Cinzel',serif; font-size:1.4rem; color:var(--cream); }
+  .wa-card h3{ font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--cream); }
   .wa-card p{ color:rgba(255,255,255,.72); margin:12px 0 26px; font-size:.98rem; }
 
   /* ========== CALENDAR (7 NIGHTS) ========== */
@@ -148,7 +175,7 @@
   .cal__frame{ background:#fff; border:1px solid var(--line); border-radius:24px; overflow:hidden; box-shadow:var(--shadow); }
   .cal__top{ display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
     padding:22px 28px; background:linear-gradient(90deg,var(--navy-800),var(--navy-700)); color:var(--cream); }
-  .cal__month{ font-family:'Cinzel',serif; font-size:1.35rem; letter-spacing:3px; display:flex; align-items:center; gap:12px; }
+  .cal__month{ font-family:'Cormorant Garamond',serif; font-size:1.35rem; letter-spacing:3px; display:flex; align-items:center; gap:12px; }
   .cal__month svg{ width:22px; height:22px; color:var(--gold-bright); }
   .cal__live{ display:inline-flex; align-items:center; gap:9px; font-size:.82rem; font-weight:700;
     letter-spacing:.5px; color:var(--navy-900); background:var(--gold-bright); padding:7px 15px; border-radius:40px; }
@@ -162,7 +189,7 @@
     padding:14px 13px; min-height:196px; background:var(--paper);
     transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
   .day:hover{ transform:translateY(-4px); box-shadow:0 20px 36px -24px rgba(20,28,56,.55); border-color:var(--line); }
-  .day__num{ font-family:'Cinzel',serif; font-size:1.75rem; line-height:1; color:var(--navy-800); }
+  .day__num{ font-family:'Cormorant Garamond',serif; font-size:1.75rem; line-height:1; color:var(--navy-800); }
   .day__wd{ font-size:.66rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-top:3px; }
   .day__tag{ margin-top:12px; align-self:flex-start; font-size:.64rem; font-weight:800; letter-spacing:.08em;
     text-transform:uppercase; color:var(--gold); background:rgba(201,162,75,.12); border:1px solid var(--line);
@@ -183,7 +210,7 @@
   .testi{ background:rgba(255,255,255,.035); border:1px solid var(--line); border-radius:18px; padding:26px; }
   .testi__top{ display:flex; align-items:center; gap:14px; margin-bottom:14px; }
   .testi__av{ width:46px; height:46px; border-radius:50%; flex:none; display:flex; align-items:center; justify-content:center;
-    font-family:'Cinzel',serif; font-weight:700; color:var(--gold-bright);
+    font-family:'Cormorant Garamond',serif; font-weight:700; color:var(--gold-bright);
     background:rgba(201,162,75,.10); border:1px solid var(--line); }
   .testi__name{ font-weight:700; }
   .testi__city{ font-size:.84rem; color:rgba(255,255,255,.58); }
@@ -195,12 +222,12 @@
     background:radial-gradient(90% 120% at 80% 0%, rgba(224,184,92,.16), transparent 55%),
       linear-gradient(180deg,var(--navy-900),var(--navy-800)); }
   .final__inner{ position:relative; z-index:1; text-align:center; max-width:820px; margin:0 auto; }
-  .final h2{ font-family:'Cinzel',serif; font-size:clamp(1.9rem,3.6vw,2.8rem); line-height:1.15; }
+  .final h2{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.9rem,3.6vw,2.8rem); line-height:1.15; }
   .final h2 .hl{ color:var(--gold-soft); }
   .final .sub{ margin-top:16px; color:rgba(255,255,255,.8); font-size:1.14rem; }
   .info-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:44px 0; }
   .info-box{ background:rgba(255,255,255,.05); border:1px solid var(--line); border-radius:18px; padding:26px 18px; }
-  .info-box .lbl{ font-family:'Cinzel',serif; color:var(--gold-bright); font-size:.98rem; letter-spacing:.5px; }
+  .info-box .lbl{ font-family:'Cormorant Garamond',serif; color:var(--gold-bright); font-size:.98rem; letter-spacing:.5px; }
   .info-box .val{ margin-top:8px; font-size:1.14rem; font-weight:700; }
   .info-box .val span{ display:block; font-size:.88rem; font-weight:500; color:rgba(255,255,255,.68); }
   .final__micro{ color:rgba(255,255,255,.74); font-size:.98rem; margin-bottom:26px; }
@@ -209,7 +236,7 @@
   /* ========== FOOTER ========== */
   footer{ background:var(--navy-950); color:rgba(255,255,255,.6); padding:66px 0 42px; text-align:center; }
   .foot-logo{ width:230px; margin:0 auto 24px; }
-  footer .tag{ font-family:'Cinzel',serif; color:var(--cream); font-size:1.02rem; letter-spacing:.5px; }
+  footer .tag{ font-family:'Cormorant Garamond',serif; color:var(--cream); font-size:1.02rem; letter-spacing:.5px; }
   .foot-div{ width:210px; height:1px; background:var(--line); margin:22px auto; }
   footer .brand{ font-weight:600; color:rgba(255,255,255,.75); }
   footer .disc{ max-width:640px; margin:20px auto 0; font-size:.77rem; line-height:1.7; color:rgba(255,255,255,.38); }
@@ -254,6 +281,15 @@
 </head>
 <body>
 
+<!-- ===================== TOP HIGHLIGHT BAR ===================== -->
+<div class="topbar">
+  <span class="live"><span class="pulse"></span> AO VIVO</span>
+  <span class="sep">·</span>
+  <span>03 A 09 DE AGOSTO DE 2026, ÀS 22H</span>
+  <span class="sep hide-sm">·</span>
+  <span class="hide-sm">EVENTO ONLINE E GRATUITO</span>
+</div>
+
 <!-- ===================== HERO ===================== -->
 <header class="hero">
   <div class="hero__bg"></div>
@@ -296,6 +332,15 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ===================== SCRIPTURE ===================== -->
+<section class="scripture">
+  <div class="scripture__inner reveal">
+    <span class="scripture__mark">&ldquo;</span>
+    <blockquote>Quando o povo ouviu o som da trombeta e deu um forte grito de guerra, o muro caiu; e cada um subiu direto para dentro da cidade, e eles a conquistaram.</blockquote>
+    <cite>Josué 6, 20</cite>
   </div>
 </section>
 

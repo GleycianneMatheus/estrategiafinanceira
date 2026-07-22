@@ -151,6 +151,25 @@
   .offer__author .who b{ font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--cream); }
   .offer__author .who span{ display:block; font-size:.86rem; color:rgba(255,255,255,.6); }
 
+  /* ===================== SECTION — ACOMPANHE (SOCIAL) ===================== */
+  .social{ background:linear-gradient(180deg,var(--paper-2),var(--paper)); padding:96px 0; }
+  .social__cards{ display:grid; grid-template-columns:1fr 1fr; gap:22px; max-width:840px; margin:38px auto 0; }
+  .soc{ display:flex; align-items:center; gap:18px; background:#fff; border:1px solid var(--line);
+    border-radius:18px; padding:22px 24px; transition:transform .18s ease, box-shadow .18s ease; }
+  .soc:hover{ transform:translateY(-4px); box-shadow:0 22px 44px -26px rgba(20,28,56,.5); }
+  .soc__ic{ width:54px; height:54px; border-radius:15px; flex:none; display:flex; align-items:center; justify-content:center; color:#fff; }
+  .soc__ic svg{ width:28px; height:28px; }
+  .soc__ic.ig{ background:linear-gradient(45deg,#F58529 5%,#DD2A7B 45%,#8134AF 95%); }
+  .soc__ic.yt{ background:#FF0000; }
+  .soc__meta{ line-height:1.3; }
+  .soc__meta b{ font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--ink); display:block; }
+  .soc__meta .count{ color:#9a7420; font-weight:700; font-size:.92rem; }
+  .soc__meta .handle{ color:var(--muted); font-size:.82rem; }
+  .soc__go{ margin-left:auto; flex:none; display:inline-flex; align-items:center; gap:6px; font-weight:700;
+    font-size:.86rem; color:var(--gold); }
+  .soc__go svg{ width:16px; height:16px; }
+  @media (max-width:680px){ .social__cards{ grid-template-columns:1fr; } .soc__go span{ display:none; } }
+
   footer{ background:var(--navy-950); color:rgba(255,255,255,.45); text-align:center; padding:34px 20px; font-size:.82rem; }
   footer b{ color:var(--cream); font-family:'Cormorant Garamond',serif; font-weight:600; letter-spacing:.5px; }
 
@@ -292,6 +311,29 @@
         <img src="assets/diacono.jpg" alt="Diácono Romulo Canuto" />
         <div class="who"><b>Diácono Romulo Canuto</b><span>Autor do devocional</span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SEÇÃO — ACOMPANHE ============ -->
+<section class="social">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow solo">Nenhum Dia Sem Jesus</span>
+      <h2>Acompanhe as pregações e orações diárias</h2>
+      <p>Todos os dias, o Diácono Romulo Canuto compartilha reflexões e orações. Siga os canais oficiais:</p>
+    </div>
+    <div class="social__cards reveal">
+      <a class="soc" href="https://www.instagram.com/diaconoromulocn" target="_blank" rel="noopener">
+        <span class="soc__ic ig"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.12 1.38C1.35 2.68.93 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.12.66.66 1.33 1.08 2.12 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.72 2.12-1.38.66-.66 1.08-1.33 1.38-2.12.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.72-1.46-1.38-2.12C21.32 1.35 20.65.93 19.86.63 19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4zm6.41-10.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg></span>
+        <div class="soc__meta"><b>Instagram</b><span class="count">946 mil seguidores</span><br /><span class="handle">@diaconoromulocn</span></div>
+        <span class="soc__go"><span>Seguir</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+      <a class="soc yt-link" href="https://www.youtube.com/results?search_query=Di%C3%A1cono+Romulo+Canuto" target="_blank" rel="noopener">
+        <span class="soc__ic yt"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14C4.5 20.45 12 20.45 12 20.45s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.55 15.57V8.43L15.82 12z"/></svg></span>
+        <div class="soc__meta"><b>YouTube</b><span class="count">106 mil inscritos</span><br /><span class="handle">Diácono Romulo Canuto</span></div>
+        <span class="soc__go"><span>Inscrever</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
     </div>
   </div>
 </section>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nenhum Dia Sem Jesus — Devocional 365 Dias | Diácono Romulo Canuto</title>
+<meta name="description" content="Devocional de 365 dias para um encontro diário com Cristo. Com o Diácono Romulo Canuto." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy-950:#080C1A; --navy-900:#0B1022; --navy-800:#111834; --navy-700:#1A2344; --navy-600:#26315A;
+    --gold:#C9A24B; --gold-bright:#E0B85C; --gold-soft:#EBD39A;
+    --cream:#F6ECD2; --paper:#FBF7EF; --paper-2:#F2E9D6;
+    --ink:#1A2038; --muted:#5A6280; --line:rgba(201,162,75,.30); --line-soft:rgba(26,32,56,.10);
+    --shadow:0 34px 80px -34px rgba(8,12,26,.6); --maxw:1160px;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif; color:var(--ink);
+    background:var(--paper); line-height:1.62; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  img{ max-width:100%; display:block; }
+  a{ text-decoration:none; color:inherit; }
+  .wrap{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+
+  .btn{ display:inline-flex; align-items:center; justify-content:center; gap:11px; font-weight:700;
+    font-size:1.05rem; padding:19px 40px; border-radius:60px; border:0; cursor:pointer; line-height:1.2;
+    text-align:center; transition:transform .18s ease, box-shadow .18s ease; }
+  .btn-gold{ background:linear-gradient(180deg,var(--gold-bright),var(--gold)); color:#2A2005;
+    box-shadow:0 18px 36px -14px rgba(201,162,75,.75), inset 0 1px 0 rgba(255,255,255,.4); }
+  .btn-gold:hover{ transform:translateY(-3px); box-shadow:0 26px 48px -14px rgba(201,162,75,.95); }
+  .btn-lg{ font-size:1.15rem; padding:22px 46px; }
+  .btn .ic{ width:20px; height:20px; flex:none; }
+
+  .eyebrow{ display:inline-flex; align-items:center; gap:12px; font-weight:700; font-size:.76rem;
+    letter-spacing:.26em; text-transform:uppercase; color:var(--gold); }
+  .eyebrow::before,.eyebrow::after{ content:""; width:30px; height:1px; background:var(--gold); opacity:.55; }
+  .eyebrow.solo::after{ display:none; }
+  .on-dark .eyebrow{ color:var(--gold-bright); }
+
+  h1,h2,h3,.serif{ font-family:'Cormorant Garamond',serif; }
+
+  /* ===================== SECTION 1 — HERO ===================== */
+  .hero{ position:relative; overflow:hidden; color:#fff;
+    background:radial-gradient(80% 90% at 78% 20%, rgba(224,184,92,.22), transparent 55%),
+      linear-gradient(180deg,#0B1022,#080C1A); }
+  .hero__inner{ display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center;
+    min-height:100vh; padding:60px 0; }
+  .hero__eyebrow{ margin-bottom:22px; }
+  .hero h1{ font-weight:700; font-size:clamp(2.6rem,6vw,4.6rem); line-height:1; letter-spacing:.5px;
+    color:var(--cream); text-wrap:balance; }
+  .hero h1 .amp{ display:block; color:var(--gold-bright); }
+  .hero__sub{ margin-top:20px; font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:500;
+    font-size:clamp(1.25rem,2.2vw,1.6rem); color:var(--gold-soft); }
+  .hero__lead{ margin-top:20px; font-size:1.08rem; color:rgba(255,255,255,.8); max-width:480px; }
+  .hero__meta{ margin-top:26px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+  .hero__cta{ margin-top:30px; }
+  .hero__trust{ margin-top:16px; font-size:.9rem; color:rgba(255,255,255,.6); display:flex; align-items:center; gap:8px; }
+  .hero__trust .star{ color:var(--gold-bright); letter-spacing:2px; }
+  .badge-author{ display:inline-flex; align-items:center; gap:10px; background:rgba(235,211,154,.1);
+    border:1px solid var(--line); padding:9px 18px; border-radius:60px; font-size:.9rem; font-weight:600;
+    color:var(--cream); }
+  .badge-author .dot{ width:8px; height:8px; border-radius:50%; background:var(--gold-bright); box-shadow:0 0 0 4px rgba(224,184,92,.22); }
+
+  .hero__book{ position:relative; display:flex; justify-content:center; }
+  .hero__book img{ width:min(430px,90%); border-radius:8px;
+    filter:drop-shadow(0 50px 70px rgba(0,0,0,.65)); transform:rotate(1deg); }
+  .hero__glow{ position:absolute; width:60%; height:60%; top:12%; left:20%;
+    background:radial-gradient(circle, rgba(224,184,92,.35), transparent 70%); filter:blur(30px); z-index:0; }
+  .hero__ribbon{ position:absolute; top:26px; right:8%; z-index:2; background:linear-gradient(180deg,var(--gold-bright),var(--gold));
+    color:#2A2005; font-weight:800; font-size:.78rem; letter-spacing:.08em; padding:8px 16px; border-radius:40px;
+    box-shadow:0 12px 24px -10px rgba(201,162,75,.8); transform:rotate(3deg); }
+
+  /* ===================== SECTION 2 — O QUE VOCÊ VAI RECEBER ===================== */
+  .receive{ background:linear-gradient(180deg,var(--paper),var(--paper-2)); padding:104px 0; }
+  .sec-head{ text-align:center; max-width:760px; margin:0 auto 58px; }
+  .sec-head h2{ font-weight:700; font-size:clamp(2rem,3.6vw,2.9rem); line-height:1.14; margin-top:14px; color:var(--ink); }
+  .sec-head p{ margin-top:16px; color:var(--muted); font-size:1.12rem; }
+  .receive__grid{ display:grid; grid-template-columns:.9fr 1.1fr; gap:56px; align-items:center; max-width:1040px; margin:0 auto; }
+  .receive__book{ position:relative; }
+  .receive__book img{ width:100%; border-radius:10px; box-shadow:var(--shadow); }
+  .receive__book::after{ content:"365"; position:absolute; right:-14px; bottom:22px;
+    background:linear-gradient(180deg,var(--navy-700),var(--navy-800)); color:var(--gold-bright);
+    font-family:'Cormorant Garamond',serif; font-weight:700; font-size:1.5rem; line-height:1;
+    padding:16px 18px 12px; border-radius:16px; border:1px solid var(--line); text-align:center; }
+  .receive__book .cap{ display:block; font-family:'Inter',sans-serif; font-size:.6rem; font-weight:700;
+    letter-spacing:.1em; color:var(--cream); text-transform:uppercase; margin-top:3px; }
+  .receive__body h3{ font-weight:700; font-size:1.55rem; color:var(--ink); margin-bottom:22px; }
+  .incl{ display:grid; gap:15px; }
+  .incl li{ display:flex; align-items:flex-start; gap:14px; list-style:none; color:var(--ink); font-size:1.02rem; }
+  .incl .ck{ width:26px; height:26px; border-radius:50%; flex:none; margin-top:2px;
+    background:linear-gradient(180deg,var(--navy-700),var(--navy-800)); display:flex; align-items:center; justify-content:center; }
+  .incl .ck svg{ width:14px; height:14px; color:var(--gold-bright); }
+  .bonus{ margin-top:28px; background:#fff; border:1px solid var(--line); border-left:4px solid var(--gold);
+    border-radius:14px; padding:22px 24px; }
+  .bonus strong{ display:block; font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:#9a7420; margin-bottom:6px; }
+  .bonus p{ color:var(--muted); font-size:.98rem; }
+
+  /* ===================== SECTION 3 — OFERTA ===================== */
+  .offer{ position:relative; overflow:hidden; color:#fff; padding:104px 0;
+    background:radial-gradient(90% 120% at 50% 0%, rgba(224,184,92,.18), transparent 55%),
+      linear-gradient(180deg,#0B1022,#111834); }
+  .offer__inner{ max-width:720px; margin:0 auto; text-align:center; position:relative; z-index:1; }
+  .offer h2{ font-weight:700; font-size:clamp(2rem,3.8vw,3rem); line-height:1.14; color:#fff; }
+  .offer h2 .hl{ color:var(--gold-soft); }
+  .offer__verse{ margin:22px auto 0; max-width:560px; font-family:'Cormorant Garamond',serif; font-style:italic;
+    font-size:1.2rem; color:var(--gold-soft); }
+  .offer__verse cite{ display:block; margin-top:8px; font-style:normal; font-family:'Inter',sans-serif;
+    font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-size:.72rem; color:rgba(255,255,255,.55); }
+  .price-card{ margin:42px auto 0; max-width:460px; background:linear-gradient(180deg,var(--navy-700),var(--navy-800));
+    border:1px solid var(--line); border-radius:24px; padding:40px 34px; box-shadow:var(--shadow); }
+  .price-card .from{ color:rgba(255,255,255,.55); text-decoration:line-through; font-size:1rem; }
+  .price-card .now{ font-family:'Cormorant Garamond',serif; font-weight:700; line-height:1; margin:6px 0 4px; }
+  .price-card .now .cur{ font-size:1.5rem; color:var(--gold-soft); vertical-align:top; }
+  .price-card .now .val{ font-size:4.2rem; color:var(--gold-bright); }
+  .price-card .inst{ color:rgba(255,255,255,.72); font-size:.98rem; }
+  .price-card .btn{ width:100%; margin:24px 0 14px; }
+  .price-card .safe{ display:flex; align-items:center; justify-content:center; gap:8px; font-size:.85rem; color:rgba(255,255,255,.6); }
+  .price-card .safe svg{ width:15px; height:15px; color:var(--gold-bright); }
+  .guarantee{ margin-top:30px; display:inline-flex; align-items:center; gap:12px; color:rgba(255,255,255,.78);
+    font-size:.95rem; background:rgba(235,211,154,.08); border:1px solid var(--line); padding:12px 22px; border-radius:60px; }
+  .guarantee svg{ width:20px; height:20px; color:var(--gold-bright); flex:none; }
+  .offer__author{ margin-top:40px; display:flex; align-items:center; justify-content:center; gap:16px; }
+  .offer__author img{ width:64px; height:64px; border-radius:50%; object-fit:cover; border:2px solid var(--gold); }
+  .offer__author .who{ text-align:left; }
+  .offer__author .who b{ font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--cream); }
+  .offer__author .who span{ display:block; font-size:.86rem; color:rgba(255,255,255,.6); }
+
+  footer{ background:var(--navy-950); color:rgba(255,255,255,.45); text-align:center; padding:34px 20px; font-size:.82rem; }
+  footer b{ color:var(--cream); font-family:'Cormorant Garamond',serif; font-weight:600; letter-spacing:.5px; }
+
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion:reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
+
+  @media (max-width:940px){
+    .hero__inner{ grid-template-columns:1fr; text-align:center; min-height:auto; padding:70px 0 60px; gap:40px; }
+    .hero__book{ order:-1; }
+    .hero__meta,.hero__trust{ justify-content:center; }
+    .receive__grid{ grid-template-columns:1fr; gap:40px; max-width:520px; }
+    .receive__book{ max-width:320px; margin:0 auto; }
+  }
+  @media (max-width:520px){
+    .wrap{ padding:0 18px; }
+    .btn{ width:100%; }
+    .receive{ padding:74px 0; } .offer{ padding:74px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ SEÇÃO 1 — HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero__inner">
+      <div class="hero__content">
+        <div class="hero__eyebrow"><span class="eyebrow solo">Devocional · 365 dias</span></div>
+        <h1>Nenhum Dia <span class="amp">Sem Jesus</span></h1>
+        <p class="hero__sub">365 dias de um encontro diário com Cristo.</p>
+        <p class="hero__lead">Comece cada manhã na presença de Deus. Uma reflexão para cada dia do ano que renova a sua fé, cura o coração e mantém você firme na caminhada.</p>
+        <div class="hero__meta">
+          <span class="badge-author"><span class="dot"></span> Diácono Romulo Canuto</span>
+        </div>
+        <div class="hero__cta">
+          <a class="btn btn-gold btn-lg buy-link" href="#oferta">Quero meu devocional</a>
+        </div>
+        <p class="hero__trust"><span class="star">★★★★★</span> Um encontro com Cristo que cabe na sua rotina.</p>
+      </div>
+      <div class="hero__book">
+        <div class="hero__glow"></div>
+        <span class="hero__ribbon">365 REFLEXÕES</span>
+        <img src="assets/livro-devocional.jpg" alt="Devocional Nenhum Dia Sem Jesus" />
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SEÇÃO 2 — O QUE VOCÊ VAI RECEBER ============ -->
+<section class="receive">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow solo">O que você vai receber</span>
+      <h2>Um devocional pensado em cada detalhe</h2>
+      <p>Um material completo para transformar a sua vida dia após dia, durante todo o ano.</p>
+    </div>
+    <div class="receive__grid">
+      <div class="receive__book reveal">
+        <img src="assets/livro-devocional.jpg" alt="Devocional Nenhum Dia Sem Jesus" />
+        <span class="cap-wrap"></span>
+      </div>
+      <div class="receive__body reveal">
+        <h3>Tudo que está incluído:</h3>
+        <ul class="incl">
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> 365 reflexões diárias profundas e transformadoras</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Propostas práticas para cada dia do ano</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Reflexões bíblicas alinhadas com o Magistério da Igreja Católica</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Espaço para anotações pessoais e crescimento espiritual</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Frases inspiradoras para meditar ao longo do dia</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Design elegante e espiritualmente edificante</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Contador diário para acompanhar sua jornada</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Conteúdo exclusivo baseado na experiência de libertação do Diácono Romulo</li>
+        </ul>
+        <div class="bonus">
+          <strong>✦ Bônus Especial</strong>
+          <p>Acesso a conteúdos exclusivos e materiais complementares para aprofundar ainda mais a sua jornada espiritual.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SEÇÃO 3 — OFERTA ============ -->
+<section class="offer on-dark" id="oferta">
+  <div class="wrap">
+    <div class="offer__inner">
+      <span class="eyebrow solo reveal">Comece hoje</span>
+      <h2 class="reveal">Faça de cada dia um <span class="hl">encontro com Cristo</span></h2>
+      <p class="offer__verse reveal">"Permanecei em mim, e eu permanecerei em vós."<cite>João 15, 4</cite></p>
+
+      <div class="price-card reveal">
+        <div class="from">de R$ 97,00</div>
+        <div class="now"><span class="cur">R$</span> <span class="val">47</span></div>
+        <div class="inst">à vista ou em até 12x de R$ 4,79</div>
+        <a class="btn btn-gold buy-link" href="#">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Quero meu devocional agora
+        </a>
+        <div class="safe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Pagamento 100% seguro</div>
+      </div>
+
+      <div class="guarantee reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        Garantia de 7 dias — se não for pra você, devolvemos o seu dinheiro.
+      </div>
+
+      <div class="offer__author reveal">
+        <img src="assets/diacono.jpg" alt="Diácono Romulo Canuto" />
+        <div class="who"><b>Diácono Romulo Canuto</b><span>Autor do devocional</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <b>Nenhum Dia Sem Jesus</b> — Devocional 365 dias · © 2026 · Diácono Romulo Canuto
+</footer>
+
+<script>
+  /* ===== Troque pelo link do seu checkout (Hotmart, Kiwify, Eduzz, Mercado Pago...) ===== */
+  var CHECKOUT_LINK = "#";
+  document.querySelectorAll('.buy-link').forEach(function(a){
+    if(a.getAttribute('href')==='#oferta') return; /* âncora interna do hero fica */
+    a.setAttribute('href', CHECKOUT_LINK);
+    if(CHECKOUT_LINK!=='#'){ a.setAttribute('target','_blank'); a.setAttribute('rel','noopener'); }
+  });
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+</body>
+</html>

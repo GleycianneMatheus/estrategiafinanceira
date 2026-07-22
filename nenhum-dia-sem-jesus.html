@@ -97,6 +97,30 @@
   .bonus strong{ display:block; font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:#9a7420; margin-bottom:6px; }
   .bonus p{ color:var(--muted); font-size:.98rem; }
 
+  /* ===================== SECTION — HISTÓRIA DO AUTOR ===================== */
+  .story{ background:linear-gradient(180deg,#FFFFFF,var(--paper)); padding:104px 0; border-top:1px solid var(--line-soft); }
+  .story__grid{ display:grid; grid-template-columns:.82fr 1.18fr; gap:56px; align-items:center; max-width:1040px; margin:0 auto; }
+  .story__photo{ position:relative; }
+  .story__photo img{ width:100%; border-radius:20px; box-shadow:var(--shadow); border:1px solid var(--line); }
+  .story__photo .tag{ position:absolute; left:50%; bottom:-20px; transform:translateX(-50%); white-space:nowrap;
+    background:linear-gradient(180deg,var(--navy-700),var(--navy-800)); color:var(--cream);
+    font-family:'Cormorant Garamond',serif; font-size:.92rem; letter-spacing:.5px; padding:9px 22px; border-radius:40px; border:1px solid var(--line); }
+  .story__body h2{ font-weight:700; font-size:clamp(1.8rem,3.2vw,2.5rem); line-height:1.15; margin:14px 0 20px; color:var(--ink); }
+  .story__body p{ color:#3a4056; font-size:1.04rem; margin-bottom:14px; }
+  .story__body p strong{ color:var(--ink); }
+  .story__stats{ display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
+  .stat{ display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--line);
+    border-radius:40px; padding:9px 16px; font-size:.85rem; font-weight:600; color:var(--ink); }
+  .stat b{ font-family:'Cormorant Garamond',serif; color:#9a7420; font-size:1.05rem; }
+  .story__quote{ max-width:900px; margin:52px auto 0; text-align:center; position:relative;
+    background:linear-gradient(180deg,var(--navy-800),var(--navy-700)); color:var(--cream);
+    border:1px solid var(--line); border-radius:22px; padding:44px 42px; box-shadow:var(--shadow); }
+  .story__quote blockquote{ font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600;
+    font-size:clamp(1.35rem,2.6vw,1.9rem); line-height:1.4; color:var(--cream); text-wrap:balance; }
+  .story__quote cite{ display:inline-flex; align-items:center; gap:12px; margin-top:20px; font-style:normal;
+    font-family:'Inter',sans-serif; font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-size:.78rem; color:var(--gold-bright); }
+  .story__quote cite::before{ content:""; width:26px; height:2px; background:var(--gold); }
+
   /* ===================== SECTION 3 — OFERTA ===================== */
   .offer{ position:relative; overflow:hidden; color:#fff; padding:104px 0;
     background:radial-gradient(90% 120% at 50% 0%, rgba(224,184,92,.18), transparent 55%),
@@ -206,6 +230,36 @@
           <p>Acesso a conteúdos exclusivos e materiais complementares para aprofundar ainda mais a sua jornada espiritual.</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SEÇÃO — HISTÓRIA DO AUTOR ============ -->
+<section class="story">
+  <div class="wrap">
+    <div class="story__grid">
+      <div class="story__photo reveal">
+        <img src="assets/diacono.jpg" alt="Diácono Romulo Canuto" />
+        <span class="tag">Diácono Romulo Canuto</span>
+      </div>
+      <div class="story__body reveal">
+        <span class="eyebrow solo">Quem é o autor</span>
+        <h2>A história por trás do devocional</h2>
+        <p>O Diácono Romulo Canuto conhece na pele o que significa ter uma <strong>família destruída e depois restaurada por completo</strong>. Ex-viciado em álcool, foi liberto há 15 anos através das orações de sua esposa Greice.</p>
+        <p>Hoje, após 23 anos de casamento e pai de duas filhas (Lara e Nina), ele é Diácono da Igreja Católica há mais de 7 anos e Missionário da Canção Nova, dedicando sua vida a ajudar outras famílias a encontrarem o mesmo caminho de transformação.</p>
+        <p>Com mais de 1 milhão de seguidores nas redes sociais, já orientou centenas de famílias e testemunhou muitos casamentos serem completamente restaurados. É autor de dois livros — <strong>"Cerco de Jericó"</strong> e <strong>"12 Passos para a Felicidade"</strong> — e sua abordagem combina sabedoria bíblica com estratégias práticas, sempre com coração pastoral.</p>
+        <div class="story__stats">
+          <span class="stat"><b>+1 milhão</b> de seguidores</span>
+          <span class="stat"><b>23 anos</b> de casamento</span>
+          <span class="stat"><b>+7 anos</b> como Diácono</span>
+          <span class="stat">Missionário da <b>Canção Nova</b></span>
+          <span class="stat">Autor de <b>2 livros</b></span>
+        </div>
+      </div>
+    </div>
+    <div class="story__quote reveal">
+      <blockquote>"Minha missão é usar minha história de transformação para que nenhuma família precise sofrer o que a minha sofreu."</blockquote>
+      <cite>Diácono Romulo Canuto</cite>
     </div>
   </div>
 </section>

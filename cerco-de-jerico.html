@@ -189,6 +189,7 @@
     padding:14px 13px; min-height:196px; background:var(--paper);
     transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
   .day:hover{ transform:translateY(-4px); box-shadow:0 20px 36px -24px rgba(20,28,56,.55); border-color:var(--line); }
+  .day__content{ display:flex; flex-direction:column; align-items:flex-start; min-width:0; width:100%; }
   .day__num{ font-family:'Cormorant Garamond',serif; font-size:1.75rem; line-height:1; color:var(--navy-800); }
   .day__wd{ font-size:.66rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-top:3px; }
   .day__tag{ margin-top:12px; align-self:flex-start; font-size:.64rem; font-weight:800; letter-spacing:.08em;
@@ -265,11 +266,12 @@
     /* calendar → agenda list */
     .cal__weekdays{ display:none; }
     .cal__grid{ grid-template-columns:1fr; gap:10px; }
-    .day{ flex-direction:row; align-items:flex-start; gap:16px; min-height:0; padding:16px 18px; }
-    .day__head{ text-align:center; flex:none; width:52px; }
-    .day__tag{ margin-top:8px; }
+    .day{ flex-direction:row; align-items:flex-start; gap:14px; min-height:0; padding:16px 18px; }
+    .day__head{ text-align:center; flex:none; width:44px; }
+    .day__content{ flex:1; }
+    .day__tag{ margin-top:0; }
+    .day__theme{ margin-top:2px; }
   }
-  @media (min-width:941px){ .day__head{ display:block; } }
   @media (max-width:520px){
     .wrap{ padding:0 18px; }
     .sec{ padding:72px 0; }
@@ -397,45 +399,45 @@
         <div class="cal__grid">
           <div class="day">
             <div class="day__head"><div class="day__num">03</div><div class="day__wd">Seg</div></div>
-            <span class="day__tag">Noite 1</span>
+            <div class="day__content"><span class="day__tag">Noite 1</span>
             <div class="day__theme">Bênçãos na Vida Profissional</div>
-            <div class="day__desc">Derrube as barreiras que travam seu crescimento profissional e financeiro.</div>
+            <div class="day__desc">Derrube as barreiras que travam seu crescimento profissional e financeiro.</div></div>
           </div>
           <div class="day">
             <div class="day__head"><div class="day__num">04</div><div class="day__wd">Ter</div></div>
-            <span class="day__tag">Noite 2</span>
+            <div class="day__content"><span class="day__tag">Noite 2</span>
             <div class="day__theme">Restauração Familiar</div>
-            <div class="day__desc">Veja Deus restaurar relacionamentos e trazer paz para a sua família.</div>
+            <div class="day__desc">Veja Deus restaurar relacionamentos e trazer paz para a sua família.</div></div>
           </div>
           <div class="day">
             <div class="day__head"><div class="day__num">05</div><div class="day__wd">Qua</div></div>
-            <span class="day__tag">Noite 3</span>
+            <div class="day__content"><span class="day__tag">Noite 3</span>
             <div class="day__theme">Cura Interior</div>
-            <div class="day__desc">Experimente a cura emocional e espiritual que o seu coração precisa.</div>
+            <div class="day__desc">Experimente a cura emocional e espiritual que o seu coração precisa.</div></div>
           </div>
           <div class="day">
             <div class="day__head"><div class="day__num">06</div><div class="day__wd">Qui</div></div>
-            <span class="day__tag">Noite 4</span>
+            <div class="day__content"><span class="day__tag">Noite 4</span>
             <div class="day__theme">Quebra de Maldições</div>
-            <div class="day__desc">Rompa com ciclos negativos e heranças malditas em sua linhagem.</div>
+            <div class="day__desc">Rompa com ciclos negativos e heranças malditas em sua linhagem.</div></div>
           </div>
           <div class="day">
             <div class="day__head"><div class="day__num">07</div><div class="day__wd">Sex</div></div>
-            <span class="day__tag">Noite 5</span>
+            <div class="day__content"><span class="day__tag">Noite 5</span>
             <div class="day__theme">Vitória Espiritual</div>
-            <div class="day__desc">Alcance vitórias impossíveis pelo poder da oração em conjunto.</div>
+            <div class="day__desc">Alcance vitórias impossíveis pelo poder da oração em conjunto.</div></div>
           </div>
           <div class="day">
             <div class="day__head"><div class="day__num">08</div><div class="day__wd">Sáb</div></div>
-            <span class="day__tag">Noite 6</span>
+            <div class="day__content"><span class="day__tag">Noite 6</span>
             <div class="day__theme">Vivendo o Sobrenatural</div>
-            <div class="day__desc">Testemunhe o poder de Deus operando milagres em sua vida.</div>
+            <div class="day__desc">Testemunhe o poder de Deus operando milagres em sua vida.</div></div>
           </div>
           <div class="day day--final">
             <div class="day__head"><div class="day__num">09</div><div class="day__wd">Dom</div></div>
-            <span class="day__tag">Noite 7</span>
+            <div class="day__content"><span class="day__tag">Noite 7</span>
             <div class="day__theme">A Queda das Muralhas</div>
-            <div class="day__desc">A noite da vitória: assim como em Jericó, no sétimo dia as muralhas caem.</div>
+            <div class="day__desc">A noite da vitória: assim como em Jericó, no sétimo dia as muralhas caem.</div></div>
           </div>
         </div>
       </div>

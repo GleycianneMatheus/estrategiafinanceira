@@ -255,9 +255,16 @@
 
   /* ========== RESPONSIVE ========== */
   @media (max-width:940px){
-    .hero{ min-height:auto; }
-    .hero__veil{ background:linear-gradient(0deg, rgba(8,11,26,.95) 0%, rgba(8,11,26,.5) 45%, rgba(8,11,26,.35) 100%); }
-    .hero__inner{ padding:64vw 0 54px; }
+    .hero{ display:block; min-height:0; }
+    .hero__bg{ position:relative; height:60vh; min-height:360px;
+      background-image:url('assets/hero-mobile.jpg'); background-position:center top; }
+    .hero__bg::after{ content:""; position:absolute; inset:0;
+      background:linear-gradient(180deg, transparent 56%, rgba(8,11,26,.8) 86%, var(--navy-900) 100%); }
+    .hero__veil{ display:none; }
+    .hero__inner{ position:relative; z-index:2; padding:26px 0 50px; text-align:center; }
+    .hero__content{ max-width:none; }
+    .hero__logo{ margin-left:auto; margin-right:auto; }
+    .hero__meta,.hero__cta{ justify-content:center; }
     .intro{ grid-template-columns:1fr; gap:44px; max-width:520px; }
     .intro__photo{ max-width:340px; margin:0 auto; }
     .wa-grid{ grid-template-columns:1fr; }
@@ -277,7 +284,7 @@
     .sec{ padding:72px 0; }
     .btn{ width:100%; }
     .hero__cta{ flex-direction:column; }
-    .hero__inner{ padding:74vw 0 44px; }
+    .hero__bg{ height:52vh; min-height:320px; }
   }
 </style>
 </head>
